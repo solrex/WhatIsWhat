@@ -29,17 +29,6 @@
         <meta-data android:name="com.baidu.speech.API_KEY" android:value="@string/api_key"/>
         <meta-data android:name="com.baidu.speech.SECRET_KEY" android:value="@string/secret_key"/>
         <service android:name="com.baidu.speech.VoiceRecognitionService" android:exported="false" ></service>
-        <activity
-            android:name="com.baidu.voicerecognition.android.ui.BaiduASRDigitalDialog"
-            android:configChanges="orientation|keyboardHidden|screenLayout"
-            android:theme="@android:style/Theme.Dialog"
-            android:exported="false"
-            android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="com.baidu.action.RECOGNIZE_SPEECH" ></action>
-                <category android:name="android.intent.category.DEFAULT" ></category>
-            </intent-filter>
-        </activity>
         <!-- end : baidu speech sdk-->
 
         <activity android:name=".MainActivity"
