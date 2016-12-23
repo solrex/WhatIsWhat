@@ -6,6 +6,12 @@
 
 把它开源出来，是有一个想法：其实每个爸爸妈妈，都希望自己给孩子的爱是特殊的呀，那 TA 就可以在这个 APP 基础上进行修改，比如在每条语音提示前都加上自己宝宝的名字，甚至直接替换成自己的录音。那这就变成了送给宝宝的一份用心的独一无二的礼物了！
 
+## 我想先体验一下
+
+你可以点击链接 https://github.com/solrex/WhatIsWhat/releases 或者扫描下方二维码访问下载列表，下载一个编译好的 `.apk` 文件，安装在安卓手机上体验一下。
+
+![下载页面](http://chart.apis.google.com/chart?cht=qr&chld=|0&choe=UTF-8&chs=200x200&chl=https%3A%2F%2Fgithub.com%2Fsolrex%2FWhatIsWhat%2Freleases)
+
 ## 怎么编译
 
 ### 下载代码，配置编译环境
