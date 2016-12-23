@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 设置白色背景色 -->
+    <solid android:color="@color/colorCard" />
+
+    <!-- 设置一个500灰边框 -->
+    <stroke
+        android:width="1px"
+        android:color="@color/colorBoarder" />
+
+    <!-- 设置四个圆角的半径 -->
+    <corners
+        android:bottomLeftRadius="3dp"
+        android:bottomRightRadius="3dp"
+        android:topLeftRadius="3dp"
+        android:topRightRadius="3dp" />
+
+    <!-- 设置一下边距,让空间大一点 -->
+    <padding
+        android:bottom="1dp"
+        android:left="1dp"
+        android:right="1dp"
+        android:top="1dp" />
+</shape>

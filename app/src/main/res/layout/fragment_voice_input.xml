@@ -1,0 +1,31 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".VoiceInputFragment"
+    android:tag="VoiceInputFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/redius_rec">
+    <TextView
+        android:id="@+id/voice_input_partial"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginLeft="6dp"
+        android:gravity="center_vertical"
+        android:textSize="18sp" />
+
+    <com.ooolab.whatiswhat.MicrophoneView
+        android:id="@+id/mic_btn"
+        android:layout_width="192dp"
+        android:layout_height="192dp"
+        android:layout_gravity="center"/>
+    </LinearLayout>
+
+</FrameLayout>

@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">What is what</string>
+    <string name="input_btn">Voice input button</string>
+    <string name="voice_input_intro">你可以说：什么是大熊猫？孔雀是什么？</string>
+    <string name="no_miaodong_result">很抱歉，没有找到关于"%1$s"的视频，你可以试试其它问题。</string>
+    <string name="error_on_fetch_url">很抱歉，访问网页出错了，检查是不是网络连接出问题了？</string>
+    <string name="error_on_input_format">很抱歉，我还不支持"%1$s"这个问题。</string>
+    <string name="error_on_voice_input">语音识别出错，因为"%1$s"</string>
+    <string name="vsr_error_1">出现了网络请求超时，请检查网络。</string>
+    <string name="vsr_error_2">出现了未知网络错误，请检查网络。</string>
+    <string name="vsr_error_3">出现了录音错误，请检查录音权限和麦克风。</string>
+    <string name="vsr_error_4">服务器端出错，请稍后重试。</string>
+    <string name="vsr_error_5">出现了客户端调用错误，请稍后重试。</string>
+    <string name="vsr_error_6">没有听清，请靠近话筒重试。</string>
+    <string name="vsr_error_7">无法识别语音，请靠近话筒重试。</string>
+    <string name="vsr_error_8">服务器繁忙，请稍后重试。</string>
+    <string name="vsr_error_9">出现了权限错误，请检查APP权限。</string>
+</resources>
