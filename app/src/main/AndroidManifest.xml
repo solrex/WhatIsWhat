@@ -25,9 +25,9 @@
 
         <!-- begin: baidu speech sdk-->
         <!-- from: yuyin.baidu.com -->
-        <meta-data android:name="com.baidu.speech.APP_ID" android:value="PUT_YOUR_APP_ID_HERE"/>
-        <meta-data android:name="com.baidu.speech.API_KEY" android:value="PUT_YOUR_API_KEY_HERE"/>
-        <meta-data android:name="com.baidu.speech.SECRET_KEY" android:value="PUT_YOUR_SECRET_KEY_HERE"/>
+        <meta-data android:name="com.baidu.speech.APP_ID" android:value="@string/app_id"/>
+        <meta-data android:name="com.baidu.speech.API_KEY" android:value="@string/api_key"/>
+        <meta-data android:name="com.baidu.speech.SECRET_KEY" android:value="@string/secret_key"/>
         <service android:name="com.baidu.speech.VoiceRecognitionService" android:exported="false" ></service>
         <activity
             android:name="com.baidu.voicerecognition.android.ui.BaiduASRDigitalDialog"

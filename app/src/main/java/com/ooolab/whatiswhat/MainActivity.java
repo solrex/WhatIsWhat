@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity implements
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                getSpeechSynthesizer().speak(s.subSequence(start, start+count).toString());
+                getSpeechSynthesizer().speak(s.subSequence(start, start + count).toString());
             }
 
             @Override
@@ -236,51 +236,43 @@ public class MainActivity extends AppCompatActivity implements
         Log.i(TAG, "getSpeechSynthesizer:");
         if (mSpeechSynthesizer == null) {
             Log.i(TAG, "getSpeechSynthesizer: Initialize.");
-            try {
-                // 获取语音合成对象实例
-                mSpeechSynthesizer = SpeechSynthesizer.getInstance();
-                // 设置context
-                mSpeechSynthesizer.setContext(this);
-                // 设置语音合成状态监听器
-                mSpeechSynthesizer.setSpeechSynthesizerListener(this);
+            // 获取语音合成对象实例
+            mSpeechSynthesizer = SpeechSynthesizer.getInstance();
+            // 设置context
+            mSpeechSynthesizer.setContext(this);
+            // 设置语音合成状态监听器
+            mSpeechSynthesizer.setSpeechSynthesizerListener(this);
 
-                // 设置离线引擎的资源，因为资源文件太大，需要拷贝到SD卡上才能使用
-                // 设置语音合成文本模型文件（离线引擎使用）
-                File textModelFile = new File(getExternalFilesDir(null), "bd_etts_text.dat");
-                Utils.copyAssetsToSdcard(getAssets(), "bd_etts_text.dat", textModelFile);
-                mSpeechSynthesizer.setParam(SpeechSynthesizer.PARAM_TTS_TEXT_MODEL_FILE, textModelFile.getPath());
-                // 设置语音合成声学模型文件（离线引擎使用）
-                File speechModelFile = new File(getExternalFilesDir(null), "bd_etts_speech_female.dat");
-                Utils.copyAssetsToSdcard(getAssets(), "bd_etts_speech_female.dat", speechModelFile);
-                mSpeechSynthesizer.setParam(SpeechSynthesizer.PARAM_TTS_SPEECH_MODEL_FILE, speechModelFile.getPath());
+            // 设置离线引擎的资源，因为资源文件太大，需要拷贝到SD卡上才能使用
+            // 设置语音合成文本模型文件（离线引擎使用）
+            File textModelFile = new File(getExternalFilesDir(null), "bd_etts_text.dat");
+            Utils.copyAssetsToSdcard(getAssets(), "bd_etts_text.dat", textModelFile);
+            mSpeechSynthesizer.setParam(SpeechSynthesizer.PARAM_TTS_TEXT_MODEL_FILE, textModelFile.getPath());
+            // 设置语音合成声学模型文件（离线引擎使用）
+            File speechModelFile = new File(getExternalFilesDir(null), "bd_etts_speech_female.dat");
+            Utils.copyAssetsToSdcard(getAssets(), "bd_etts_speech_female.dat", speechModelFile);
+            mSpeechSynthesizer.setParam(SpeechSynthesizer.PARAM_TTS_SPEECH_MODEL_FILE, speechModelFile.getPath());
 
-                // 拿到 AndroidManifest.xml 中的 授权信息，并设置授权
-                ApplicationInfo appInfo = getPackageManager().getApplicationInfo(getPackageName(),
-                        PackageManager.GET_META_DATA);
-                Integer appId = appInfo.metaData.getInt("com.baidu.speech.APP_ID");
-                String apiKey = appInfo.metaData.getString("com.baidu.speech.API_KEY");
-                String secretKey = appInfo.metaData.getString("com.baidu.speech.SECRET_KEY");
-                mSpeechSynthesizer.setApiKey(apiKey, secretKey);
-                mSpeechSynthesizer.setAppId(appId.toString());
+            // 拿到 APP 的授权信息，并设置授权
+            mSpeechSynthesizer.setApiKey(getResources().getString(R.string.api_key),
+                    getResources().getString(R.string.secret_key));
+            mSpeechSynthesizer.setAppId(getResources().getString(R.string.app_id));
 
-                // 发音人（在线引擎），可用参数为0,1,2,3。。。（服务器端会动态增加，各值含义参考文档，
-                // 以文档说明为准。0--普通女声，1--普通男声，2--特别男声，3--情感男声，4--情感儿童声<度丫丫>
-                mSpeechSynthesizer.setParam(SpeechSynthesizer.PARAM_SPEAKER, "4");
-                mSpeechSynthesizer.setParam(SpeechSynthesizer.PARAM_MIX_MODE,
-                        SpeechSynthesizer.MIX_MODE_HIGH_SPEED_NETWORK);
-                mSpeechSynthesizer.setParam(SpeechSynthesizer.PARAM_SPEED, "6");
-                mSpeechSynthesizer.setParam(SpeechSynthesizer.PARAM_PITCH, "6");
+            // 发音人（在线引擎），可用参数为0,1,2,3。。。（服务器端会动态增加，各值含义参考文档，
+            // 以文档说明为准。0--普通女声，1--普通男声，2--特别男声，3--情感男声，4--情感儿童声<度丫丫>
+            mSpeechSynthesizer.setParam(SpeechSynthesizer.PARAM_SPEAKER, "4");
+            mSpeechSynthesizer.setParam(SpeechSynthesizer.PARAM_MIX_MODE,
+                    SpeechSynthesizer.MIX_MODE_HIGH_SPEED_NETWORK);
+            mSpeechSynthesizer.setParam(SpeechSynthesizer.PARAM_SPEED, "6");
+            mSpeechSynthesizer.setParam(SpeechSynthesizer.PARAM_PITCH, "6");
 
-                // 初始化语音合成
-                mSpeechSynthesizer.initTts(TtsMode.MIX);
+            // 初始化语音合成
+            mSpeechSynthesizer.initTts(TtsMode.MIX);
 
-                Log.d(TAG, "getSpeechSynthesizer: engineVersion=" + SynthesizerTool.getEngineVersion());
-                Log.d(TAG, "getSpeechSynthesizer: engineInfo=" + SynthesizerTool.getEngineInfo());
-                Log.d(TAG, "getSpeechSynthesizer: textModelInfo=" + SynthesizerTool.getModelInfo(textModelFile.getPath()));
-                Log.d(TAG, "getSpeechSynthesizer: speechModelInfo=" + SynthesizerTool.getModelInfo(speechModelFile.getPath()));
-            } catch (PackageManager.NameNotFoundException e) {
-                Log.w(TAG, "getSpeechSynthesizer: ", e);
-            }
+            Log.d(TAG, "getSpeechSynthesizer: engineVersion=" + SynthesizerTool.getEngineVersion());
+            Log.d(TAG, "getSpeechSynthesizer: engineInfo=" + SynthesizerTool.getEngineInfo());
+            Log.d(TAG, "getSpeechSynthesizer: textModelInfo=" + SynthesizerTool.getModelInfo(textModelFile.getPath()));
+            Log.d(TAG, "getSpeechSynthesizer: speechModelInfo=" + SynthesizerTool.getModelInfo(speechModelFile.getPath()));
         }
         return mSpeechSynthesizer;
     }
@@ -316,8 +308,9 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     public void onError(String arg0, SpeechError arg1) {
         // 监听到出错，在此添加相关操作
-        Log.w(TAG, "onError: SpeechSynthesizer error: "+ arg1.toString());
+        Log.w(TAG, "onError: SpeechSynthesizer error: " + arg1.toString());
     }
+
     @Override
     public void onSpeechFinish(String arg0) {
         // 监听到播放结束，在此添加相关操作
@@ -329,23 +322,28 @@ public class MainActivity extends AppCompatActivity implements
             }
         });
     }
+
     @Override
     public void onSpeechProgressChanged(String arg0, int arg1) {
         // 监听到播放进度有变化，在此添加相关操作
     }
+
     @Override
     public void onSpeechStart(String arg0) {
         // 监听到合成并播放开始，在此添加相关操作
         Log.d(TAG, "onSpeechStart: ");
     }
+
     @Override
     public void onSynthesizeDataArrived(String arg0, byte[] arg1, int arg2) {
         // 监听到有合成数据到达，在此添加相关操作
     }
+
     @Override
     public void onSynthesizeFinish(String arg0) {
         // 监听到合成结束，在此添加相关操作
     }
+
     @Override
     public void onSynthesizeStart(String arg0) {
         // 监听到合成开始，在此添加相关操作
