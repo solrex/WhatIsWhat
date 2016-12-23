@@ -92,6 +92,8 @@ public class MainActivity extends AppCompatActivity implements
 
             }
         });
+        // 默认启动识别
+        findViewById(R.id.input_btn).callOnClick();
     }
 
     @Override
@@ -144,7 +146,7 @@ public class MainActivity extends AppCompatActivity implements
         mWebView.onPause();
         // 隐藏报错信息
         hideInfo();
-        // 如果
+        // 直接使用成员变量，避免初始化开销，待优化s
         if (mSpeechSynthesizer != null) {
             mSpeechSynthesizer.stop();
         }
@@ -319,6 +321,7 @@ public class MainActivity extends AppCompatActivity implements
             @Override
             public void run() {
                 hideInfo();
+                mWebView.onResume();
             }
         });
     }
@@ -332,6 +335,12 @@ public class MainActivity extends AppCompatActivity implements
     public void onSpeechStart(String arg0) {
         // 监听到合成并播放开始，在此添加相关操作
         Log.d(TAG, "onSpeechStart: ");
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                mWebView.onPause();
+            }
+        });
     }
 
     @Override

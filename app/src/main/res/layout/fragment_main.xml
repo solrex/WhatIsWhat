@@ -23,7 +23,6 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_toLeftOf="@+id/input_btn"
-            android:layout_toStartOf="@+id/input_btn"
             android:gravity="center_vertical"
             android:text="@string/app_name"
             android:textColor="@color/textColorPrimary"
