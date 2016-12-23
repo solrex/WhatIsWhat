@@ -12,6 +12,10 @@
 
 ![下载页面](http://chart.apis.google.com/chart?cht=qr&chld=|0&choe=UTF-8&chs=200x200&chl=https%3A%2F%2Fgithub.com%2Fsolrex%2FWhatIsWhat%2Freleases)
 
+下面是一段功能演示视频，可以点击下图到爱奇艺查看：
+
+[![演示视频，点击查看](http://u3.qiyipic.com/image/20161223/fb/81/uv_4015415252_m_601_180_101.jpg)](http://www.iqiyi.com/w_19ru8huel1.html)
+
 ## 怎么编译
 
 ### 下载代码，配置编译环境
